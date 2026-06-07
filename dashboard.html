@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>订单管理 - AI内容工坊</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;padding:20px;max-width:1000px;margin:0 auto}
+h1{font-size:1.6rem;margin-bottom:20px}
+h1 small{font-size:0.9rem;font-weight:400;color:#6e6e73;margin-left:10px}
+.actions{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap}
+.btn{padding:10px 20px;border:none;border-radius:10px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:background .2s}
+.btn-primary{background:#0071e3;color:#fff}
+.btn-primary:hover{background:#0077ed}
+.btn-danger{background:#ff3b30;color:#fff}
+.btn-danger:hover{background:#d32f2f}
+.btn-outline{background:transparent;border:1.5px solid #d2d2d7;color:#1d1d1f}
+.btn-outline:hover{background:#f5f5f7}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:24px}
+.stat-card{background:#fff;border-radius:12px;padding:16px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.stat-card .num{font-size:1.6rem;font-weight:700;color:#1d1d1f}
+.stat-card .label{font-size:0.8rem;color:#6e6e73;margin-top:2px}
+.table-wrap{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+table{width:100%;border-collapse:collapse;font-size:0.9rem}
+th{background:#f5f5f7;padding:12px 14px;text-align:left;font-weight:600;color:#6e6e73;font-size:0.82rem}
+td{padding:12px 14px;border-top:1px solid #eee}
+tr:hover{background:#fafafa}
+.status{display:inline-block;padding:2px 10px;border-radius:10px;font-size:0.78rem;font-weight:500}
+.status-new{background:#e3f2fd;color:#1565c0}
+.status-done{background:#e8f5e9;color:#2e7d32}
+.status-paid{background:#fff3e0;color:#e65100}
+.modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.4);align-items:center;justify-content:center;z-index:100}
+.modal.show{display:flex}
+.modal-box{background:#fff;border-radius:16px;padding:30px;width:90%;max-width:500px;max-height:80vh;overflow-y:auto}
+.modal-box h2{font-size:1.2rem;margin-bottom:16px}
+.form-row{margin-bottom:14px}
+.form-row label{display:block;font-weight:600;font-size:0.85rem;margin-bottom:4px}
+.form-row input,.form-row select,.form-row textarea{width:100%;padding:10px 12px;border:1.5px solid #d2d2d7;border-radius:8px;font-size:0.9rem;font-family:inherit}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:#0071e3}
+.form-row textarea{resize:vertical;min-height:60px}
+.modal-actions{display:flex;gap:10px;margin-top:16px;justify-content:flex-end}
+.empty{text-align:center;padding:40px;color:#6e6e73}
+.empty p{font-size:0.95rem}
+.export-info{text-align:center;margin-top:16px;font-size:0.82rem;color:#6e6e73}
+@media(max-width:640px){th,td{padding:8px 10px;font-size:0.82rem}}
+</style>
+</head>
+<body>
+<h1>订单管理 <small id="todayLabel"></small></h1>
+<div class="stats" id="stats"></div>
+<div class="actions">
+<button class="btn btn-primary" onclick="showModal()">+ 新订单</button>
+<button class="btn btn-outline" onclick="exportData()">导出数据</button>
+<button class="btn btn-outline" onclick="clearAll()">清空测试数据</button>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>时间</th><th>客户</th><th>联系方式</th><th>服务</th><th>金额</th><th>状态</th><th>操作</th></tr></thead>
+<tbody id="ordersBody"></tbody>
+</table>
+<div id="emptyState" class="empty"><p>还没有订单，点击"+ 新订单"添加第一条</p></div>
+</div>
+<div class="export-info">数据保存在浏览器本地，不会丢失</div>
+<div class="modal" id="modal">
+<div class="modal-box">
+<h2 id="modalTitle">新增订单</h2>
+<div class="form-row"><label>客户名字</label><input type="text" id="fName" placeholder="微信昵称/姓名"></div>
+<div class="form-row"><label>联系方式</label><input type="text" id="fContact" placeholder="微信号"></div>
+<div class="form-row"><label>服务类型</label>
+<select id="fService">
+<option value="小红书笔记">小红书笔记</option>
+<option value="公众号文章">公众号文章</option>
+<option value="短视频脚本">短视频脚本</option>
+<option value="简历优化">简历优化</option>
+<option value="PPT制作">PPT制作</option>
+<option value="AI头像">AI头像/人像</option>
+<option value="Excel自动化">Excel自动化</option>
+<option value="定制方案">定制方案</option>
+</select></div>
+<div class="form-row"><label>金额 (¥)</label><input type="number" id="fAmount" placeholder="0" step="1"></div>
+<div class="form-row"><label>备注</label><textarea id="fNote" placeholder="需求描述/交付内容"></textarea></div>
+<div class="modal-actions">
+<button class="btn btn-outline" onclick="hideModal()">取消</button>
+<button class="btn btn-primary" onclick="saveOrder()">保存</button>
+</div>
+</div>
+</div>
+<script>
+var orders = [];
+var editId = null;
+
+function load() {
+try { orders = JSON.parse(localStorage.getItem("ws_orders") || "[]"); } catch(e) { orders = []; }
+document.getElementById("todayLabel").textContent = "共 " + orders.length + " 单";
+render();
+}
+
+function save() {
+localStorage.setItem("ws_orders", JSON.stringify(orders));
+document.getElementById("todayLabel").textContent = "共 " + orders.length + " 单";
+render();
+}
+
+function render() {
+var tbody = document.getElementById("ordersBody");
+var empty = document.getElementById("emptyState");
+if (orders.length === 0) {
+tbody.innerHTML = "";
+empty.style.display = "block";
+} else {
+empty.style.display = "none";
+tbody.innerHTML = orders.map(function(o, i) {
+var statusClass = o.status === "new" ? "status-new" : o.status === "done" ? "status-done" : "status-paid";
+var statusText = o.status === "new" ? "进行中" : o.status === "done" ? "已交付" : "已收款";
+var amount = o.amount || "-";
+return "<tr><td>" + o.time + "</td><td>" + o.name + "</td><td>" + o.contact + "</td><td>" + o.service + "</td><td>¥" + amount + "</td><td><span class=\"status " + statusClass + "\">" + statusText + "</span></td><td><button class=\"btn btn-outline\" style=\"padding:4px 10px;font-size:0.78rem\" onclick=\"editOrder(" + i + ")\">编辑</button> <button class=\"btn btn-danger\" style=\"padding:4px 10px;font-size:0.78rem\" onclick=\"deleteOrder(" + i + ")\">删除</button></td></tr>";
+}).join("");
+}
+renderStats();
+}
+
+function renderStats() {
+var total = orders.length;
+var revenue = 0;
+var pending = 0;
+orders.forEach(function(o) {
+var amt = parseFloat(o.amount) || 0;
+revenue += amt;
+if (o.status === "new") pending++;
+});
+document.getElementById("stats").innerHTML = [
+"<div class=\"stat-card\"><div class=\"num\">" + total + "</div><div class=\"label\">总订单</div></div>",
+"<div class=\"stat-card\"><div class=\"num\">¥" + revenue + "</div><div class=\"label\">总收入</div></div>",
+"<div class=\"stat-card\"><div class=\"num\">" + pending + "</div><div class=\"label\">进行中</div></div>",
+"<div class=\"stat-card\"><div class=\"num\">" + (total - pending) + "</div><div class=\"label\">已完成</div></div>"
+].join("");
+}
+
+function showModal(data) {
+editId = data ? data.id : null;
+document.getElementById("modalTitle").textContent = data ? "编辑订单" : "新增订单";
+document.getElementById("fName").value = data ? data.name : "";
+document.getElementById("fContact").value = data ? data.contact : "";
+document.getElementById("fService").value = data ? data.service : "小红书笔记";
+document.getElementById("fAmount").value = data ? data.amount : "";
+document.getElementById("fNote").value = data ? data.note : "";
+document.getElementById("modal").classList.add("show");
+}
+
+function hideModal() {
+document.getElementById("modal").classList.remove("show");
+editId = null;
+}
+
+function saveOrder() {
+var name = document.getElementById("fName").value.trim();
+var contact = document.getElementById("fContact").value.trim();
+var service = document.getElementById("fService").value;
+var amount = document.getElementById("fAmount").value.trim();
+var note = document.getElementById("fNote").value.trim();
+if (!name) { alert("请输入客户名字"); return; }
+var now = new Date();
+var timeStr = now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate() + " " + now.getHours() + ":" + (now.getMinutes()<10?"0":"") + now.getMinutes();
+if (editId !== null) {
+orders[editId].name = name;
+orders[editId].contact = contact;
+orders[editId].service = service;
+orders[editId].amount = amount;
+orders[editId].note = note;
+} else {
+orders.unshift({name:name,contact:contact,service:service,amount:amount,note:note,time:timeStr,status:"new"});
+}
+save();
+hideModal();
+}
+
+function editOrder(i) {
+showModal({id:i,name:orders[i].name,contact:orders[i].contact,service:orders[i].service,amount:orders[i].amount,note:orders[i].note});
+}
+
+function deleteOrder(i) {
+if (!confirm("确定删除这条订单？")) return;
+orders.splice(i, 1);
+save();
+}
+
+function exportData() {
+if (orders.length === 0) { alert("没有数据可导出"); return; }
+var rows = [["时间","客户","联系方式","服务","金额","状态","备注"]];
+orders.forEach(function(o) {
+var st = o.status === "new" ? "进行中" : o.status === "done" ? "已交付" : "已收款";
+rows.push([o.time, o.name, o.contact, o.service, o.amount || "", st, o.note || ""]);
+});
+var csv = rows.map(function(r) { return r.map(function(v) { return '"' + String(v).replace(/"/g,'""') + '"'; }).join(","); }).join("\n");
+var blob = new Blob(["\ufeff" + csv], {type:"text/csv;charset=utf-8"});
+var url = URL.createObjectURL(blob);
+var a = document.createElement("a");
+a.href = url;
+a.download = "订单数据_" + new Date().toISOString().slice(0,10) + ".csv";
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+URL.revokeObjectURL(url);
+}
+
+function clearAll() {
+if (!confirm("确定删除所有订单数据？")) return;
+orders = [];
+save();
+}
+
+load();
+</script>
+</body>
+</html>
