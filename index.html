@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI内容工坊</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.6}
+.container{max-width:960px;margin:0 auto;padding:0 20px}
+.hero{background:linear-gradient(135deg,#1d1d1f,#2d2d2f);color:#fff;padding:80px 0 60px;text-align:center}
+.hero h1{font-size:2.8rem;font-weight:700;margin-bottom:12px}
+.hero p{font-size:1.15rem;color:#a1a1a6;max-width:600px;margin:0 auto 28px}
+.hero .badge{display:inline-block;background:#0071e3;color:#fff;padding:6px 16px;border-radius:20px;font-size:.85rem;font-weight:500;margin-bottom:20px}
+.cta-btn{display:inline-block;background:#0071e3;color:#fff;padding:14px 36px;border-radius:30px;font-size:1.05rem;font-weight:600;text-decoration:none;border:none;cursor:pointer}
+.cta-btn:hover{background:#0077ed}
+.cta-btn.secondary{background:transparent;border:1.5px solid rgba(255,255,255,.4);margin-left:12px}
+.section{padding:60px 0}
+.section-title{font-size:1.8rem;font-weight:700;text-align:center;margin-bottom:40px}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px}
+.service-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:transform .2s}
+.service-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.service-card .icon{font-size:2rem;margin-bottom:12px}
+.service-card h3{font-size:1.15rem;font-weight:600;margin-bottom:8px}
+.service-card p{font-size:.92rem;color:#6e6e73}
+.service-card .price{display:inline-block;margin-top:14px;font-weight:600;color:#0071e3;font-size:1rem}
+.pricing-table{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.pricing-table table{width:100%;border-collapse:collapse}
+.pricing-table th{background:#f5f5f7;padding:14px 20px;text-align:left;font-weight:600;font-size:.9rem;color:#6e6e73}
+.pricing-table td{padding:14px 20px;border-bottom:1px solid #eee;font-size:.95rem}
+.pricing-table tr:last-child td{border-bottom:none}
+.pricing-table .tag{display:inline-block;background:#e8f5e9;color:#2e7d32;padding:2px 10px;border-radius:12px;font-size:.8rem;font-weight:500}
+.inquiry-section{background:#fff;border-radius:16px;padding:40px;box-shadow:0 2px 8px rgba(0,0,0,.04);max-width:600px;margin:0 auto}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-weight:600;font-size:.9rem;margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 14px;border:1.5px solid #d2d2d7;border-radius:10px;font-size:.95rem;font-family:inherit}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#0071e3}
+.form-group textarea{resize:vertical;min-height:100px}
+.submit-btn{width:100%;padding:14px;background:#0071e3;color:#fff;border:none;border-radius:12px;font-size:1rem;font-weight:600;cursor:pointer}
+.submit-btn:hover{background:#0077ed}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.why-item{text-align:center;padding:20px}
+.why-item .num{font-size:2.2rem;font-weight:700;color:#0071e3;margin-bottom:4px}
+.why-item p{font-size:.92rem;color:#6e6e73}
+.faq-item{background:#fff;border-radius:12px;padding:20px 24px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.faq-item q{font-weight:600;display:block;margin-bottom:6px}
+.faq-item a{color:#6e6e73;font-size:.92rem}
+.footer{text-align:center;padding:40px 0;color:#6e6e73;font-size:.85rem;border-top:1px solid #d2d2d7;margin-top:20px}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#1d1d1f;color:#fff;padding:14px 28px;border-radius:12px;font-size:.95rem;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999}
+.toast.show{opacity:1}
+@media(max-width:640px){.hero h1{font-size:1.8rem}.cta-btn.secondary{margin-left:0;margin-top:10px;display:block}}
+</style>
+</head>
+<body>
+<div class="hero"><div class="container">
+<div class="badge">今日下单 / 2小时内交付</div>
+<h1>AI 内容工坊</h1>
+<p>不做模板糊弄。每份交付都由 AI + 人工精修，<br>比你自己写的快 10 倍，比纯 AI 的有温度 10 倍。</p>
+<a href="#inquiry" class="cta-btn">立即下单</a>
+<a href="#pricing" class="cta-btn secondary">查看报价</a>
+</div></div>
+<div class="section"><div class="container">
+<h2 class="section-title">能做什么</h2>
+<div class="services-grid">
+<div class="service-card"><div class="icon">&#9998;</div><h3>文案代写</h3><p>小红书笔记、公众号文章、朋友圈文案、品牌故事。</p><div class="price">20-100 / 篇</div></div>
+<div class="service-card"><div class="icon">&#128196;</div><h3>文档代做</h3><p>PPT、Word排版、简历优化、商业计划书、读书笔记、演讲稿。</p><div class="price">30-200 / 份</div></div>
+<div class="service-card"><div class="icon">&#127912;</div><h3>AI 绘图</h3><p>头像设计、海报、配图、产品图、LOGO概念稿。</p><div class="price">15-80 / 张</div></div>
+<div class="service-card"><div class="icon">&#128202;</div><h3>数据分析</h3><p>Excel报表、数据可视化、Python脚本、自动化工具。</p><div class="price">50-300 / 单</div></div>
+<div class="service-card"><div class="icon">&#128241;</div><h3>小红书代运营</h3><p>账号定位、选题规划、笔记撰写、排期发布、数据复盘。</p><div class="price">499-1999 / 月</div></div>
+<div class="service-card"><div class="icon">&#127916;</div><h3>视频脚本</h3><p>抖音口播、B站干货、小红书 Vlog 脚本。</p><div class="price">30-150 / 条</div></div>
+</div></div></div>
+<div class="section" style="background:#f5f5f7"><div class="container">
+<h2 class="section-title">标准报价</h2>
+<div class="pricing-table"><table>
+<thead><tr><th>服务项</th><th>说明</th><th>价格</th></tr></thead>
+<tbody>
+<tr><td>小红书笔记</td><td>500-800字 + 标题 + emoji排版 + 话题标签</td><td><strong>29</strong> <span class="tag">最热</span></td></tr>
+<tr><td>公众号文章</td><td>1500-2000字，含小标题和配图建议</td><td><strong>59</strong></td></tr>
+<tr><td>短视频脚本</td><td>60s口播稿，含开头钩子+逻辑框架+CTA</td><td><strong>39</strong></td></tr>
+<tr><td>简历优化</td><td>中英文简历排版+措辞润色+一页纸优化</td><td><strong>49</strong></td></tr>
+<tr><td>PPT制作</td><td>10页以内，模板精美，含动画/图表</td><td><strong>99</strong></td></tr>
+<tr><td>AI 头像/人像</td><td>Midjourney直出，含3版供选</td><td><strong>19</strong></td></tr>
+<tr><td>Excel 自动化</td><td>VBA脚本/Python脚本，去重/合并/报表一键出</td><td><strong>69</strong></td></tr>
+<tr><td>定制方案</td><td>商业计划书、毕业论文润色、品牌全案</td><td><strong>200+</strong> <span class="tag" style="background:#fff3e0;color:#e65100">议价</span></td></tr>
+</tbody></table></div>
+<p style="text-align:center;margin-top:16px;color:#6e6e73;font-size:.9rem">量大优惠 / 长期合作可谈套餐价</p>
+</div></div>
+<div class="section"><div class="container">
+<h2 class="section-title">为什么找我</h2>
+<div class="why-grid">
+<div class="why-item"><div class="num">2h</div><p>平均交付时间<br>急单最快30分钟</p></div>
+<div class="why-item"><div class="num">&infin;</div><p>免费修改<br>改到满意为止</p></div>
+<div class="why-item"><div class="num">100%</div><p>原创承诺<br>AI查重通过再交付</p></div>
+<div class="why-item"><div class="num">OK</div><p>先出稿，满意再付款<br>无风险合作</p></div>
+</div></div></div>
+<div class="section" style="background:#f5f5f7"><div class="container">
+<h2 class="section-title">常见问题</h2>
+<div class="faq-item"><q>怎么下单？</q><a>直接填下面的表单，或者加微信联系。做完先发你看，满意再付款。</a></div>
+<div class="faq-item"><q>多久能出稿？</q><a>常规单 2 小时内交付。急单加急 30 分钟搞定，不额外收费。</a></div>
+<div class="faq-item"><q>能保证原创吗？</q><a>每份交付都经过 AI 查重检测，原创率 90% 以上。</a></div>
+<div class="faq-item"><q>不满意怎么办？</q><a>不限次数修改，改到你满意为止。实在不满意，分文不收。</a></div>
+</div></div>
+<div class="section"><div class="container">
+<h2 class="section-title">提交需求</h2>
+<form class="inquiry-section" id="orderForm">
+<div class="form-group"><label>怎么称呼你</label><input type="text" id="name" placeholder="你的名字 / 昵称" required></div>
+<div class="form-group"><label>联系方式</label><input type="text" id="contact" placeholder="微信 / 手机 / 邮箱" required></div>
+<div class="form-group"><label>服务类型</label><select id="serviceType" required>
+<option value="">请选择...</option>
+<option value="小红书笔记">小红书笔记</option>
+<option value="公众号文章">公众号文章</option>
+<option value="短视频脚本">短视频脚本</option>
+<option value="简历优化">简历优化</option>
+<option value="PPT制作">PPT制作</option>
+<option value="AI头像">AI头像/人像</option>
+<option value="Excel自动化">Excel自动化</option>
+<option value="代运营">小红书代运营</option>
+<option value="其他">其他（备注说明）</option>
+</select></div>
+<div class="form-group"><label>详细需求</label><textarea id="detail" placeholder="说一下具体要求：什么主题？多少字？什么风格？什么时候要？" required></textarea></div>
+<button type="submit" class="submit-btn">提交需求 / 免费报价</button>
+</form></div></div>
+<div class="footer"><div class="container">
+<p>2026 AI内容工坊 / 先出稿，满意再付款</p>
+<p style="margin-top:4px">微信: dxc629811</p>
+</div></div>
+<div class="toast" id="toast"></div>
+<script>
+(function(){
+var form=document.getElementById("orderForm");if(!form)return;
+form.addEventListener("submit",function(e){
+e.preventDefault();
+var name=document.getElementById("name").value.trim();
+var contact=document.getElementById("contact").value.trim();
+var service=document.getElementById("serviceType").value;
+var detail=document.getElementById("detail").value.trim();
+if(!name||!contact||!service||!detail)return;
+var orders=JSON.parse(localStorage.getItem("orders")||"[]");
+orders.unshift({name:name,contact:contact,service:service,detail:detail,time:new Date().toLocaleString()});
+localStorage.setItem("orders",JSON.stringify(orders));
+var toast=document.getElementById("toast");
+toast.textContent="需求已保存！复制信息发给我";
+toast.classList.add("show");
+setTimeout(function(){toast.classList.remove("show")},3000);
+var txt="客户: "+name+"\n联系方式: "+contact+"\n服务: "+service+"\n需求: "+detail;
+var ta=document.createElement("textarea");
+ta.value=txt;
+ta.style.position="fixed";ta.style.opacity="0";
+document.body.appendChild(ta);ta.select();
+document.execCommand("copy");
+document.body.removeChild(ta);
+form.reset();
+});})();
+</script>
+</body>
+</html>
