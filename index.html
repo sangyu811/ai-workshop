@@ -1,91 +1,234 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
+<meta name="description" content="AI内容工坊 - 先出稿满意再付款。小红书笔记29起、公众号文章59起、PPT制作99起。AI+人工精修2小时内交付。">
+<meta name="keywords" content="AI代写,文案代写,小红书笔记,公众号文章,PPT制作,简历优化,AI绘图,代运营">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI内容工坊</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.6}
+<style>*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{-webkit-tap-highlight-color:transparent;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.6}
 .container{max-width:960px;margin:0 auto;padding:0 20px}
 .hero{background:linear-gradient(135deg,#1d1d1f,#2d2d2f);color:#fff;padding:80px 0 60px;text-align:center}
-.hero h1{font-size:2.8rem;font-weight:700;margin-bottom:12px}
+.hero h1{font-size:2.8rem;font-weight:700;margin-bottom:12px;letter-spacing:-.5px}
 .hero p{font-size:1.15rem;color:#a1a1a6;max-width:600px;margin:0 auto 28px}
 .hero .badge{display:inline-block;background:#0071e3;color:#fff;padding:6px 16px;border-radius:20px;font-size:.85rem;font-weight:500;margin-bottom:20px}
 .cta-btn{display:inline-block;background:#0071e3;color:#fff;padding:14px 36px;border-radius:30px;font-size:1.05rem;font-weight:600;text-decoration:none;border:none;cursor:pointer}
 .cta-btn:hover{background:#0077ed}
 .cta-btn.secondary{background:transparent;border:1.5px solid rgba(255,255,255,.4);margin-left:12px}
 .section{padding:60px 0}
-.section-title{font-size:1.8rem;font-weight:700;text-align:center;margin-bottom:40px}
+.section-title{font-size:1.7rem;font-weight:700;text-align:center;margin-bottom:40px;position:relative}
+.section-title::after{content:'';display:block;width:40px;height:3px;background:linear-gradient(90deg,#0071e3,#00a0ff);border-radius:2px;margin:12px auto 0}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px}
-.service-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:transform .2s}
-.service-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.service-card .icon{font-size:2rem;margin-bottom:12px}
-.service-card h3{font-size:1.15rem;font-weight:600;margin-bottom:8px}
-.service-card p{font-size:.92rem;color:#6e6e73}
-.service-card .price{display:inline-block;margin-top:14px;font-weight:600;color:#0071e3;font-size:1rem}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px}
+.service-card{background:#fff;border-radius:14px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.04);transition:all .25s;position:relative}
+.service-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08)}
+.service-card .icon-wrap{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;transition:transform .25s}
+.service-card:hover .icon-wrap{transform:scale(1.05)}
+.service-card .icon-wrap svg{width:24px;height:24px;display:block}
+.service-card h3{font-size:1.1rem;font-weight:600;margin-bottom:6px;color:#1d1d1f}
+.service-card p{font-size:.88rem;color:#6e6e73;margin-bottom:8px;line-height:1.6}
+.service-card .price{font-weight:700;color:#0071e3;font-size:1.15rem;letter-spacing:.3px}
+.service-card .price small{font-size:.75rem;color:#6e6e73;font-weight:400;letter-spacing:0}
+.package-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:36px}
+.package-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,.04);text-align:center;position:relative;transition:all .2s;border:2px solid transparent}
+.package-card:hover{box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.package-card.popular{border-color:#0071e3}
+.package-card .pop-tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#0071e3;color:#fff;padding:4px 16px;border-radius:20px;font-size:.75rem;font-weight:600}
+.package-card h3{font-size:1.1rem;font-weight:600;margin-bottom:8px}
+.package-card .big-price{font-size:2.4rem;font-weight:700;color:#1d1d1f;margin:8px 0}
+.package-card .big-price small{font-size:.9rem;font-weight:400;color:#6e6e73}
+.package-card .per-unit{font-size:.85rem;color:#34c759;font-weight:600;margin-bottom:12px}
+.package-card ul{text-align:left;list-style:none;padding:0;margin:0 0 16px}
+.package-card ul li{padding:4px 0;font-size:.88rem;color:#6e6e73}
+.package-card ul li:before{content:"\2713";color:#34c759;margin-right:8px;font-weight:700}
 .pricing-table{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.04)}
 .pricing-table table{width:100%;border-collapse:collapse}
 .pricing-table th{background:#f5f5f7;padding:14px 20px;text-align:left;font-weight:600;font-size:.9rem;color:#6e6e73}
 .pricing-table td{padding:14px 20px;border-bottom:1px solid #eee;font-size:.95rem}
 .pricing-table tr:last-child td{border-bottom:none}
-.pricing-table .tag{display:inline-block;background:#e8f5e9;color:#2e7d32;padding:2px 10px;border-radius:12px;font-size:.8rem;font-weight:500}
-.inquiry-section{background:#fff;border-radius:16px;padding:40px;box-shadow:0 2px 8px rgba(0,0,0,.04);max-width:600px;margin:0 auto}
-.form-group{margin-bottom:18px}
-.form-group label{display:block;font-weight:600;font-size:.9rem;margin-bottom:6px}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 14px;border:1.5px solid #d2d2d7;border-radius:10px;font-size:.95rem;font-family:inherit}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#0071e3}
-.form-group textarea{resize:vertical;min-height:100px}
-.submit-btn{width:100%;padding:14px;background:#0071e3;color:#fff;border:none;border-radius:12px;font-size:1rem;font-weight:600;cursor:pointer}
-.submit-btn:hover{background:#0077ed}
+.pricing-table tr:hover{background:#fafafa}
+.pricing-table .price-cell{font-weight:700;color:#1d1d1f;font-size:1.05rem}
+.pricing-table .old-price{text-decoration:line-through;color:#c7c7cc;font-weight:400;font-size:.82rem;margin-right:6px}
+.pricing-table .tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:.75rem;font-weight:500;margin-left:6px}
+.pricing-table .tag.hot{background:#ff3b30;color:#fff}
+.pricing-table .tag.pop{background:#e8f5e9;color:#2e7d32}
+.pricing-table .tag.new{background:#e3f2fd;color:#1565c0}
+.pricing-table .order-cell{text-align:center}
+.pricing-table .mini-order-btn{padding:6px 16px;border:1px solid #0071e3;border-radius:8px;background:transparent;color:#0071e3;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s;min-height:36px}
+.pricing-table .mini-order-btn:hover{background:#0071e3;color:#fff}
 .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
 .why-item{text-align:center;padding:20px}
-.why-item .num{font-size:2.2rem;font-weight:700;color:#0071e3;margin-bottom:4px}
+.why-item .num{font-size:2rem;font-weight:700;background:linear-gradient(135deg,#0071e3,#00a0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;letter-spacing:-.5px}
 .why-item p{font-size:.92rem;color:#6e6e73}
 .faq-item{background:#fff;border-radius:12px;padding:20px 24px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
 .faq-item q{font-weight:600;display:block;margin-bottom:6px}
 .faq-item a{color:#6e6e73;font-size:.92rem}
 .footer{text-align:center;padding:40px 0;color:#6e6e73;font-size:.85rem;border-top:1px solid #d2d2d7;margin-top:20px}
-.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#1d1d1f;color:#fff;padding:14px 28px;border-radius:12px;font-size:.95rem;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999}
-.toast.show{opacity:1}
-@media(max-width:640px){.hero h1{font-size:1.8rem}.cta-btn.secondary{margin-left:0;margin-top:10px;display:block}}
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center}
+.modal-overlay.show{display:flex}
+.modal-box{background:#fff;border-radius:20px;padding:36px;width:90%;max-width:500px;max-height:90vh;overflow-y:auto;position:relative}
+.modal-box h2{font-size:1.3rem;margin-bottom:6px}
+.modal-box .modal-sub{color:#6e6e73;font-size:.9rem;margin-bottom:20px}
+.modal-close{position:absolute;top:16px;right:20px;font-size:1.4rem;cursor:pointer;color:#c7c7cc;background:none;border:none;line-height:1}
+.modal-close:hover{color:#1d1d1f}
+.form-row{margin-bottom:14px}
+.form-row label{display:block;font-weight:600;font-size:.85rem;margin-bottom:4px;color:#1d1d1f}
+.form-row input,.form-row select,.form-row textarea{width:100%;padding:11px 14px;border:1.5px solid #d2d2d7;border-radius:10px;font-size:.92rem;font-family:inherit;transition:border .2s}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:#0071e3}
+.form-row textarea{resize:vertical;min-height:70px}
+.total-bar{background:#f5f5f7;border-radius:12px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.total-bar .total-label{font-size:.9rem;color:#6e6e73}
+.total-bar .total-amount{font-size:1.4rem;font-weight:700;color:#1d1d1f}
+.total-bar .total-amount small{font-size:.85rem;font-weight:400;color:#6e6e73}
+.submit-btn{width:100%;padding:14px;background:#0071e3;color:#fff;border:none;border-radius:12px;font-size:1rem;font-weight:600;cursor:pointer;transition:background .2s}
+.submit-btn:hover{background:#0077ed}
+.submit-btn .sub{font-weight:400;font-size:.8rem;opacity:.7}
+.float-order{position:fixed;bottom:calc(24px + env(safe-area-inset-bottom,0px));right:calc(24px + env(safe-area-inset-right,0px));z-index:999;background:#0071e3;color:#fff;width:56px;height:56px;border-radius:50%;border:none;font-size:1.6rem;cursor:pointer;box-shadow:0 4px 16px rgba(0,113,227,.4);transition:all .2s}
+.float-order:hover{transform:scale(1.08);box-shadow:0 6px 24px rgba(0,113,227,.5)}
+.float-label{display:none;position:absolute;right:64px;top:50%;transform:translateY(-50%);background:#1d1d1f;color:#fff;padding:6px 14px;border-radius:8px;font-size:.8rem;white-space:nowrap}
+.float-order:hover .float-label{display:block}
+@media(max-width:768px){
+.container{padding:0 16px}
+.hero{padding:60px 0 44px}
+.hero h1{font-size:2rem}
+.hero p{font-size:1rem}
+.section{padding:40px 0}
+.section-title{font-size:1.4rem;margin-bottom:28px}
+.section-title::after{margin:10px auto 0;width:32px;height:2.5px}
+.nav-bar .nav-links a{font-size:.78rem;padding:6px 10px}
+.services-grid{gap:14px}
+.service-card{padding:20px}
+.package-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto 28px}
+.testimonials-grid{gap:12px}
+.testimonial-card{padding:20px}
+.why-grid{gap:12px}
+.why-item .num{font-size:1.6rem}
+.faq-item{padding:16px 18px}
+}
+@media(max-width:480px){
+.hero{padding:44px 0 36px}
+.hero h1{font-size:1.5rem}
+.hero p{font-size:.92rem;margin:0 0 20px}
+.hero .badge{font-size:.78rem;padding:4px 12px}
+.cta-btn{padding:12px 28px;font-size:.95rem;min-height:44px}
+.nav-bar .brand{font-size:.9rem}
+.nav-bar .nav-links{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.nav-bar .nav-links::-webkit-scrollbar{display:none}
+.nav-bar .nav-links a{font-size:.72rem;padding:6px 8px;white-space:nowrap}
+.section-title{font-size:1.2rem;margin-bottom:22px}
+.section-title::after{width:28px;height:2px}
+.service-card{padding:16px}
+.service-card h3{font-size:1rem}
+.service-card p{font-size:.82rem}
+.package-card{padding:22px;width:100%}
+.package-card .big-price{font-size:2rem}
+.modal-box{padding:20px;border-radius:14px}
+#payModal .modal-box{padding:20px 16px 18px}
+#payModal .modal-box img{width:110px!important;height:110px!important}
+.float-order{width:48px;height:48px;font-size:1.3rem;bottom:12px;right:12px}
+.float-pay{width:48px;height:48px;font-size:1.1rem;bottom:12px;left:12px}
+.scroll-top{width:38px;height:38px;font-size:1rem;bottom:68px;right:12px}
+.footer{padding:28px 0}
+.footer .nav-links a{font-size:.78rem}
+}
+@media(max-width:375px){
+.hero h1{font-size:1.35rem}
+.container{padding:0 12px}
+.services-grid{gap:10px}
+.testimonials-grid{grid-template-columns:1fr}
+#payModal .modal-box img{width:100px!important;height:100px!important}
+}
 </style>
 </head>
 <body>
+<div class="nav-bar"><div class="container">
+<a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false" class="brand">⚡ AI内容工坊</a>
+<div class="nav-links">
+<a href="#services">服务</a>
+<a href="#pricing">报价</a>
+<a href="#why">为什么</a>
+<a href="#reviews">评价</a>
+<a href="#faq">FAQ</a>
+</div>
+</div></div>
 <div class="hero"><div class="container">
 <div class="badge">今日下单 / 2小时内交付</div>
 <h1>AI 内容工坊</h1>
 <p>不做模板糊弄。每份交付都由 AI + 人工精修，<br>比你自己写的快 10 倍，比纯 AI 的有温度 10 倍。</p>
-<a href="#inquiry" class="cta-btn">立即下单</a>
+<div class="cta-row">
+<a href="javascript:void(0)" class="cta-btn" onclick="openOrder()">立即下单</a>
 <a href="#pricing" class="cta-btn secondary">查看报价</a>
+</div>
 </div></div>
-<div class="section"><div class="container">
+<div class="section" id="services"><div class="container">
 <h2 class="section-title">能做什么</h2>
 <div class="services-grid">
-<div class="service-card"><div class="icon">&#9998;</div><h3>文案代写</h3><p>小红书笔记、公众号文章、朋友圈文案、品牌故事。</p><div class="price">20-100 / 篇</div></div>
-<div class="service-card"><div class="icon">&#128196;</div><h3>文档代做</h3><p>PPT、Word排版、简历优化、商业计划书、读书笔记、演讲稿。</p><div class="price">30-200 / 份</div></div>
-<div class="service-card"><div class="icon">&#127912;</div><h3>AI 绘图</h3><p>头像设计、海报、配图、产品图、LOGO概念稿。</p><div class="price">15-80 / 张</div></div>
-<div class="service-card"><div class="icon">&#128202;</div><h3>数据分析</h3><p>Excel报表、数据可视化、Python脚本、自动化工具。</p><div class="price">50-300 / 单</div></div>
-<div class="service-card"><div class="icon">&#128241;</div><h3>小红书代运营</h3><p>账号定位、选题规划、笔记撰写、排期发布、数据复盘。</p><div class="price">499-1999 / 月</div></div>
-<div class="service-card"><div class="icon">&#127916;</div><h3>视频脚本</h3><p>抖音口播、B站干货、小红书 Vlog 脚本。</p><div class="price">30-150 / 条</div></div>
+<div class="service-card"><div class="icon-wrap" style="background:linear-gradient(135deg,#0071e3,#00a0ff);box-shadow:0 4px 12px rgba(0,0,0,.08)"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="MM15 4l4 4L8 19l-5 1 1-5L15 4z"/></svg></div><h3>文案代写</h3><p>小红书笔记、公众号文章、朋友圈文案、品牌故事。</p><div class="price">20-100 / 篇</div></div>
+<div class="service-card"><div class="icon-wrap" style="background:linear-gradient(135deg,#5856d6,#7b6fe0);box-shadow:0 4px 12px #7b6fe033"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div><h3>文档代做</h3><p>PPT、Word排版、简历优化、商业计划书、读书笔记、演讲稿。</p><div class="price">30-200 / 份</div></div>
+<div class="service-card"><div class="icon-wrap" style="background:linear-gradient(135deg,#af52de,#c77dff);box-shadow:0 4px 12px rgba(175,82,222,.2)"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="white" stroke="none"/><circle cx="17.5" cy="10.5" r=".5" fill="white" stroke="none"/><circle cx="8.5" cy="7.5" r=".5" fill="white" stroke="none"/><circle cx="6.5" cy="12.5" r=".5" fill="white" stroke="none"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.5-.7 1.5-1.5 0-.4-.2-.8-.5-1.1-.3-.3-.5-.7-.5-1.1 0-.9.7-1.5 1.5-1.5H14c4.4 0 8-3.6 8-8 0-5.5-4.5-10-10-10z"/></svg></div><h3>AI 绘图</h3><p>头像设计、海报、配图、产品图、LOGO概念稿。</p><div class="price">15-80 / 张</div></div>
+<div class="service-card"><div class="icon-wrap" style="background:linear-gradient(135deg,#34c759,#68d88a);box-shadow:0 4px 12px rgba(0,0,0,.08)"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="MM18 20V10M12 20V4M6 20v-6"/></svg></div><h3>数据分析</h3><p>Excel报表、数据可视化、Python脚本、自动化工具。</p><div class="price">50-300 / 单</div></div>
+<div class="service-card"><div class="icon-wrap" style="background:linear-gradient(135deg,#ff9500,#ffb340);box-shadow:0 4px 12px rgba(255,149,0,.2)"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 14c1.1-.7 1.7-2 1.5-3.6S20.7 8 19 8c-.5 0-1-.1-1.5-.2L12 5v12l5.5-2.8c.5-.1 1-.2 1.5-.2 1.7 0 3.5-1.3 3.5-3.6z"/><path d="M9 18c0 1.1-.9 2-2 2s-2-.9-2-2"/><path d="M5 15V5c0-1.1.9-2 2-2h2"/></svg></div><h3>小红书代运营</h3><p>账号定位、选题规划、笔记撰写、排期发布、数据复盘。</p><div class="price">499-1999 / 月</div></div>
+<div class="service-card"><div class="icon-wrap" style="background:linear-gradient(135deg,#ff3b30,#ff6b6b);box-shadow:0 4px 12px rgba(0,0,0,.08)"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="MM5 3l14 9L5 21V3z"/></svg></div><h3>视频脚本</h3><p>抖音口播、B站干货、小红书 Vlog 脚本。</p><div class="price">30-150 / 条</div></div>
 </div></div></div>
-<div class="section" style="background:#f5f5f7"><div class="container">
-<h2 class="section-title">标准报价</h2>
-<div class="pricing-table"><table>
-<thead><tr><th>服务项</th><th>说明</th><th>价格</th></tr></thead>
+<div class="section" style="background:#f5f5f7" id="pricing"><div class="container">
+<h2 class="section-title">选套餐更划算</h2>
+<div class="package-grid">
+<div class="package-card">
+<h3>单篇体验</h3>
+<div class="big-price">29<small>起</small></div>
+<div class="per-unit">按篇支付，灵活试用</div>
+<ul>
+<li>任选一项服务</li>
+<li>2小时内交付</li>
+<li>免费修改到满意</li>
+<li>先出稿后付款</li>
+</ul>
+<button class="cta-btn" style="padding:10px 28px;font-size:.9rem" onclick="openOrder('小红书笔记',29)">立即下单</button>
+</div>
+<div class="package-card popular">
+<div class="pop-tag">推荐</div>
+<h3>5篇套餐</h3>
+<div class="big-price">99<small>起</small></div>
+<div class="per-unit">省约32% / 低至19.8/篇</div>
+<ul>
+<li>任选服务自由搭配</li>
+<li>优先排单，1小时交付</li>
+<li>送1次免费加急</li>
+<li>专属需求对接</li>
+</ul>
+<button class="cta-btn" style="padding:10px 28px;font-size:.9rem" onclick="openOrder('5篇套餐',99)">立即抢购</button>
+</div>
+<div class="package-card">
+<h3>10篇畅写</h3>
+<div class="big-price">168<small>起</small></div>
+<div class="per-unit">省约42% / 低至16.8/篇</div>
+<ul>
+<li>任选服务自由搭配</li>
+<li>专属客服，30分钟响应</li>
+<li>送3次免费加急</li>
+<li>优先交付+月度对账</li>
+</ul>
+<button class="cta-btn" style="padding:10px 28px;font-size:.9rem" onclick="openOrder('10篇套餐',168)">立即抢购</button>
+</div>
+</div>
+<h2 class="section-title" style="font-size:1.3rem;margin-bottom:20px">单品价目表</h2>
+<div class="pricing-table" style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table style="min-width:580px">
+<thead><tr><th>服务项</th><th>说明</th><th style="text-align:center">单价</th><th></th></tr></thead>
 <tbody>
-<tr><td>小红书笔记</td><td>500-800字 + 标题 + emoji排版 + 话题标签</td><td><strong>29</strong> <span class="tag">最热</span></td></tr>
-<tr><td>公众号文章</td><td>1500-2000字，含小标题和配图建议</td><td><strong>59</strong></td></tr>
-<tr><td>短视频脚本</td><td>60s口播稿，含开头钩子+逻辑框架+CTA</td><td><strong>39</strong></td></tr>
-<tr><td>简历优化</td><td>中英文简历排版+措辞润色+一页纸优化</td><td><strong>49</strong></td></tr>
-<tr><td>PPT制作</td><td>10页以内，模板精美，含动画/图表</td><td><strong>99</strong></td></tr>
-<tr><td>AI 头像/人像</td><td>Midjourney直出，含3版供选</td><td><strong>19</strong></td></tr>
-<tr><td>Excel 自动化</td><td>VBA脚本/Python脚本，去重/合并/报表一键出</td><td><strong>69</strong></td></tr>
-<tr><td>定制方案</td><td>商业计划书、毕业论文润色、品牌全案</td><td><strong>200+</strong> <span class="tag" style="background:#fff3e0;color:#e65100">议价</span></td></tr>
+<tr><td>小红书笔记</td><td>500-800字 + 标题 + emoji排版 + 话题标签</td><td class="price-cell" style="text-align:center"><span class="old-price">39</span><strong>29</strong> <span class="tag hot">热销</span></td><td class="order-cell"><button class="mini-order-btn" onclick="openOrder('小红书笔记',29)">选我</button></td></tr>
+<tr><td>公众号文章</td><td>1500-2000字含小标题和配图建议</td><td class="price-cell" style="text-align:center"><span class="old-price">79</span><strong>59</strong></td><td class="order-cell"><button class="mini-order-btn" onclick="openOrder('公众号文章',59)">选我</button></td></tr>
+<tr><td>短视频脚本</td><td>60s口播稿含开头钩子+逻辑框架+CTA</td><td class="price-cell" style="text-align:center"><span class="old-price">59</span><strong>39</strong> <span class="tag pop">火爆</span></td><td class="order-cell"><button class="mini-order-btn" onclick="openOrder('短视频脚本',39)">选我</button></td></tr>
+<tr><td>简历优化</td><td>中英文简历排版+措辞润色+一页纸优化</td><td class="price-cell" style="text-align:center"><strong>49</strong></td><td class="order-cell"><button class="mini-order-btn" onclick="openOrder('简历优化',49)">选我</button></td></tr>
+<tr><td>PPT制作</td><td>10页以内模板精美含动画/图表</td><td class="price-cell" style="text-align:center"><span class="old-price">149</span><strong>99</strong></td><td class="order-cell"><button class="mini-order-btn" onclick="openOrder('PPT制作',99)">选我</button></td></tr>
+<tr><td>AI头像/人像</td><td>Midjourney直出含3版供选</td><td class="price-cell" style="text-align:center"><strong>19</strong> <span class="tag new">入门</span></td><td class="order-cell"><button class="mini-order-btn" onclick="openOrder('AI头像',19)">选我</button></td></tr>
+<tr><td>Excel自动化</td><td>VBA/Python脚本去重/合并/报表一键生成</td><td class="price-cell" style="text-align:center"><strong>69</strong></td><td class="order-cell"><button class="mini-order-btn" onclick="openOrder('Excel自动化',69)">选我</button></td></tr>
+<tr><td>定制方案</td><td>商业计划书/毕业论文润色/品牌全案</td><td class="price-cell" style="text-align:center"><strong>200+</strong> <span class="tag" style="background:#fff3e0;color:#e65100">议价</span></td><td class="order-cell"><button class="mini-order-btn" onclick="openOrder('定制方案',200)">询价</button></td></tr>
 </tbody></table></div>
-<p style="text-align:center;margin-top:16px;color:#6e6e73;font-size:.9rem">量大优惠 / 长期合作可谈套餐价</p>
+<p style="text-align:center;margin-top:16px;color:#6e6e73;font-size:.9rem">套餐与单品可混合使用 / 长期合作另议</p>
 </div></div>
-<div class="section"><div class="container">
+<div class="section" id="why"><div class="container">
 <h2 class="section-title">为什么找我</h2>
 <div class="why-grid">
 <div class="why-item"><div class="num">2h</div><p>平均交付时间<br>急单最快30分钟</p></div>
@@ -93,64 +236,192 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 <div class="why-item"><div class="num">100%</div><p>原创承诺<br>AI查重通过再交付</p></div>
 <div class="why-item"><div class="num">OK</div><p>先出稿，满意再付款<br>无风险合作</p></div>
 </div></div></div>
-<div class="section" style="background:#f5f5f7"><div class="container">
+<div class="section" style="background:#f5f5f7" id="reviews"><div class="container">
+<h2 class="section-title">客户评价</h2>
+<div class="testimonials-grid">
+<div class="testimonial-card"><div class="text">效率真的快，晚上十点找她写的小红书笔记，第二天早上起来就发我了，而且写得比我自己好多了。已复购三次。</div><div class="author">@小鹿 <span>复购3次</span></div></div>
+<div class="testimonial-card"><div class="text">帮我改的简历投出去第三天就接到了电话面试，49块钱花得太值了。同学都问我哪里改的。</div><div class="author">@大四的L <span>已入职</span></div></div>
+<div class="testimonial-card"><div class="text">一直做小红书但流量不好，让她帮忙写了10篇笔记，一个月涨粉800+。每篇都改到我觉得OK才发，态度很好。</div><div class="author">@小店主M <span>长期合作</span></div></div>
+</div>
+<p style="text-align:center;margin-top:14px;color:#6e6e73;font-size:.88rem">真实用户反馈 · 已脱敏处理</p>
+</div></div>
+<div class="section" style="background:#fff" id="faq"><div class="container">
 <h2 class="section-title">常见问题</h2>
-<div class="faq-item"><q>怎么下单？</q><a>直接填下面的表单，或者加微信联系。做完先发你看，满意再付款。</a></div>
+<div class="faq-item"><q>怎么下单？</q><a>直接填下面的表单，做完先发你看，满意再付款。</a></div>
 <div class="faq-item"><q>多久能出稿？</q><a>常规单 2 小时内交付。急单加急 30 分钟搞定，不额外收费。</a></div>
 <div class="faq-item"><q>能保证原创吗？</q><a>每份交付都经过 AI 查重检测，原创率 90% 以上。</a></div>
 <div class="faq-item"><q>不满意怎么办？</q><a>不限次数修改，改到你满意为止。实在不满意，分文不收。</a></div>
+<div class="faq-item"><q>怎么付款？</q><a>支持微信支付、支付宝、转账。先出稿，你确认满意了再付款。长期合作可月结。 <a href="javascript:;" onclick="openPayModal()" style="color:#0071e3;text-decoration:underline;font-size:.85rem">查看支付方式</a></a></div>
 </div></div>
-<div class="section"><div class="container">
-<h2 class="section-title">提交需求</h2>
-<form class="inquiry-section" id="orderForm">
-<div class="form-group"><label>怎么称呼你</label><input type="text" id="name" placeholder="你的名字 / 昵称" required></div>
-<div class="form-group"><label>联系方式</label><input type="text" id="contact" placeholder="微信 / 手机 / 邮箱" required></div>
-<div class="form-group"><label>服务类型</label><select id="serviceType" required>
-<option value="">请选择...</option>
-<option value="小红书笔记">小红书笔记</option>
-<option value="公众号文章">公众号文章</option>
-<option value="短视频脚本">短视频脚本</option>
-<option value="简历优化">简历优化</option>
-<option value="PPT制作">PPT制作</option>
-<option value="AI头像">AI头像/人像</option>
-<option value="Excel自动化">Excel自动化</option>
-<option value="代运营">小红书代运营</option>
-<option value="其他">其他（备注说明）</option>
-</select></div>
-<div class="form-group"><label>详细需求</label><textarea id="detail" placeholder="说一下具体要求：什么主题？多少字？什么风格？什么时候要？" required></textarea></div>
-<button type="submit" class="submit-btn">提交需求 / 免费报价</button>
-</form></div></div>
-<div class="footer"><div class="container">
+<div class="modal-overlay" id="orderModal">
+<div class="modal-box">
+<button class="modal-close" onclick="closeOrderModal()">&times;</button>
+<h2>快速下单</h2>
+<p class="modal-sub">填写需求，我们先出稿给你确认</p>
+<form id="quickOrderForm">
+<div class="form-row">
+<label>服务类型</label>
+<select id="qService" onchange="calcTotal()">
+<option value="小红书笔记" data-price="29">小红书笔记 - 29</option>
+<option value="公众号文章" data-price="59">公众号文章 - 59</option>
+<option value="短视频脚本" data-price="39">短视频脚本 - 39</option>
+<option value="简历优化" data-price="49">简历优化 - 49</option>
+<option value="PPT制作" data-price="99">PPT制作 - 99</option>
+<option value="AI头像" data-price="19">AI头像/人像 - 19</option>
+<option value="Excel自动化" data-price="69">Excel自动化 - 69</option>
+<option value="定制品" data-price="200">定制方案 - 200+</option>
+</select>
+</div>
+<div class="form-row">
+<label>数量</label>
+<select id="qQuantity" onchange="calcTotal()">
+<option value="1">1 篇/份</option>
+<option value="3">3 篇/份 (省30-60)</option>
+<option value="5">5 篇/份 (省50-100)</option>
+<option value="10">10 篇/份 (省100-200)</option>
+</select>
+</div>
+<div class="form-row">
+<label>加急</label>
+<select id="qUrgent">
+<option value="normal">普通（2小时内交付）</option>
+<option value="urgent">加急（30分钟内交付）</option>
+</select>
+</div>
+<div class="total-bar">
+<span class="total-label">预估总价</span>
+<span class="total-amount" id="totalDisplay">29 <small>首单</small></span>
+</div>
+<div class="form-row">
+<label>你的称呼</label>
+<input type="text" id="qName" placeholder="怎么称呼你" required>
+</div>
+<div class="form-row">
+<label>联系方式</label>
+<input type="text" id="qContact" placeholder="手机号/联系方式" required>
+</div>
+<div class="form-row">
+<label>需求说明</label>
+<textarea id="qDetail" placeholder="说一下具体要求：什么主题？多少字？什么风格？有什么参考素材？" required></textarea>
+</div>
+<button type="submit" class="submit-btn">提交订单 <span class="sub">确认后再付款</span></button>
+</form>
+</div>
+</div>
+
+<button class="float-order" onclick="openOrder()">
+&#9993;
+<span class="float-label">快速下单</span>
+</button><div class="footer"><div class="container">
 <p>2026 AI内容工坊 / 先出稿，满意再付款</p>
-<p style="margin-top:4px">微信: dxc629811</p>
+<div class="nav-links"><a href="#services">服务</a><a href="#pricing">报价</a><a href="dashboard.html" target="_blank">订单管理</a></div>
+
 </div></div>
+<div class="modal-overlay" id="payModal">
+<div class="modal-box" style="max-width:360px;padding:28px 24px 22px">
+<button class="modal-close" onclick="closePayModal()">&times;</button>
+<div style="text-align:center">
+<p style="font-size:.82rem;color:#6e6e73;margin:0 0 14px">先出稿 &middot; 确认满意后再付款</p>
+<img src="alipay.png" alt="支付二维码" style="width:130px;height:130px;border-radius:12px;display:block;margin:0 auto 12px;border:2px solid #f0f0f0">
+<div style="display:flex;gap:6px;justify-content:center;margin-bottom:14px">
+<span style="font-size:.65rem;font-weight:500;background:linear-gradient(135deg,#1677ff,#0d5bd6);color:#fff;padding:2px 10px;border-radius:20px">支付宝</span>
+<span style="font-size:.65rem;font-weight:500;background:linear-gradient(135deg,#fa5151,#d63030);color:#fff;padding:2px 10px;border-radius:20px">微信支付</span>
+<span style="font-size:.65rem;font-weight:500;background:#f5f5f7;color:#6e6e73;padding:2px 10px;border-radius:20px">转账</span>
+</div>
+
+<div class="pay-flow" style="display:flex;align-items:center;justify-content:center;gap:4px;margin-bottom:0;font-size:.75rem">
+<span class="step active" style="display:inline-flex;align-items:center;justify-content:center;background:#0071e3;color:#fff;padding:3px 10px;border-radius:14px;font-weight:500;font-size:.7rem">① 下单</span>
+<span class="arrow" style="color:#c7c7cc;font-size:1rem;font-weight:300">→</span>
+<span class="step" style="display:inline-flex;align-items:center;justify-content:center;background:#f5f5f7;color:#1d1d1f;padding:3px 10px;border-radius:14px;font-weight:500;font-size:.7rem">② 出稿</span>
+<span class="arrow" style="color:#c7c7cc;font-size:1rem;font-weight:300">→</span>
+<span class="step" style="display:inline-flex;align-items:center;justify-content:center;background:#f5f5f7;color:#1d1d1f;padding:3px 10px;border-radius:14px;font-weight:500;font-size:.7rem">③ 确认</span>
+<span class="arrow" style="color:#c7c7cc;font-size:1rem;font-weight:300">→</span>
+<span class="step" style="display:inline-flex;align-items:center;justify-content:center;background:#f5f5f7;color:#1d1d1f;padding:3px 10px;border-radius:14px;font-weight:500;font-size:.7rem">④ 付款</span>
+</div>
+</div>
+</div>
+</div>
 <div class="toast" id="toast"></div>
+<button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">↑</button>
 <script>
-(function(){
-var form=document.getElementById("orderForm");if(!form)return;
-form.addEventListener("submit",function(e){
-e.preventDefault();
-var name=document.getElementById("name").value.trim();
-var contact=document.getElementById("contact").value.trim();
-var service=document.getElementById("serviceType").value;
-var detail=document.getElementById("detail").value.trim();
-if(!name||!contact||!service||!detail)return;
-var orders=JSON.parse(localStorage.getItem("orders")||"[]");
-orders.unshift({name:name,contact:contact,service:service,detail:detail,time:new Date().toLocaleString()});
-localStorage.setItem("orders",JSON.stringify(orders));
-var toast=document.getElementById("toast");
-toast.textContent="需求已保存！复制信息发给我";
-toast.classList.add("show");
-setTimeout(function(){toast.classList.remove("show")},3000);
-var txt="客户: "+name+"\n联系方式: "+contact+"\n服务: "+service+"\n需求: "+detail;
-var ta=document.createElement("textarea");
-ta.value=txt;
-ta.style.position="fixed";ta.style.opacity="0";
-document.body.appendChild(ta);ta.select();
-document.execCommand("copy");
-document.body.removeChild(ta);
-form.reset();
-});})();
+function openPayModal(){document.getElementById("payModal").classList.add("show");document.body.style.overflow="hidden"}
+function closePayModal(){document.getElementById("payModal").classList.remove("show");document.body.style.overflow=""}
+window.addEventListener("scroll",function(){var b=document.getElementById("scrollTopBtn");b&&b.classList.toggle("visible",window.scrollY>400)});
+document.querySelectorAll(".section").forEach(function(s){s.classList.add("fade-in")});
+if("IntersectionObserver"in window){var ob=new IntersectionObserver(function(e){e.forEach(function(e){e.isIntersecting&&(e.target.classList.add("visible"),ob.unobserve(e.target))})},{threshold:.15});document.querySelectorAll(".section.fade-in").forEach(function(s){ob.observe(s)})};
+var priceMap = {
+  "小红书笔记":29,"公众号文章":59,"短视频脚本":39,
+  "简历优化":49,"PPT制作":99,"AI头像":19,
+  "Excel自动化":69,"定制品":200
+};
+var qtyDiscount = {1:1,3:0.9,5:0.8,10:0.7};
+
+function openOrder(service,price) {
+  document.getElementById("orderModal").classList.add("show");
+  document.body.style.overflow="hidden";
+  if(service) {
+    var sel=document.getElementById("qService");
+    for(var i=0;i<sel.options.length;i++) {
+      if(sel.options[i].value===service){sel.selectedIndex=i;break;}
+    }
+  }
+  calcTotal();
+  setTimeout(function(){document.getElementById("qName").focus()},300);
+}
+function closeOrderModal() {
+  document.getElementById("orderModal").classList.remove("show");
+  document.body.style.overflow="";
+}
+function calcTotal() {
+  var svc=document.getElementById("qService").value;
+  var qty=parseInt(document.getElementById("qQuantity").value);
+  var base=priceMap[svc]||29;
+  var disc=qtyDiscount[qty]||1;
+  var total=Math.round(base*qty*disc);
+  var el=document.getElementById("totalDisplay");
+  if(qty>1) {
+    var saved=base*qty-total;
+    el.innerHTML=total+" <small>省"+saved+"</small>";
+  } else {
+    el.innerHTML=total+" <small>首单</small>";
+  }
+}
+document.getElementById("payModal").addEventListener("click",function(e){if(e.target===this)closePayModal()});
+document.getElementById("orderModal").addEventListener("click",function(e){
+  if(e.target===this)closeOrderModal();
+});
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape"){closeOrderModal();closePayModal()}
+});
+document.getElementById("quickOrderForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  var svc=document.getElementById("qService").value;
+  var qty=document.getElementById("qQuantity").value;
+  var urg=document.getElementById("qUrgent").value;
+  var name=document.getElementById("qName").value.trim();
+  var ctc=document.getElementById("qContact").value.trim();
+  var det=document.getElementById("qDetail").value.trim();
+  if(!name||!ctc||!det){alert("请填写完整信息");return;}
+  var total=document.getElementById("totalDisplay").innerText;
+  var txt="【新订单】\n客户: "+name+"\n微信: "+ctc+"\n服务: "+svc+"\n数量: "+qty+"\n加急: "+(urg==="urgent"?"是(30分钟)":"否(2小时)")+"\n预估: "+total+"\n需求: "+det;
+  var ta=document.createElement("textarea");
+  ta.value=txt;ta.style.position="fixed";ta.style.opacity="0";
+  document.body.appendChild(ta);ta.select();
+  document.execCommand("copy");
+  document.body.removeChild(ta);
+  var orders=JSON.parse(localStorage.getItem("orders")||"[]");
+  orders.unshift({name:name,contact:ctc,service:svc+"x"+qty,detail:det,time:new Date().toLocaleString(),amount:total});
+  localStorage.setItem("orders",JSON.stringify(orders));
+  var toast=document.getElementById("toast");
+  toast.textContent="订单已提交！我们会尽快联系你确认需求";
+  toast.classList.add("show");
+  setTimeout(function(){toast.classList.remove("show")},4000);
+  closeOrderModal();
+  this.reset();
+  document.getElementById("qQuantity").value="1";
+  document.getElementById("qUrgent").value="normal";
+  calcTotal();
+});
 </script>
 </body>
 </html>
